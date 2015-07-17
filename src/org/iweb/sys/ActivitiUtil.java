@@ -1,5 +1,6 @@
 package org.iweb.sys;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,19 +14,8 @@ import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.repository.ProcessDefinitionQuery;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
-
-
-
-
-
-
-
 import com.qkj.manage.domain.VacationForm;
-
-
 public class ActivitiUtil {
-
-	
 	private final static String url = "com/qkj/activiti/";
 	private ProcessEngine engine=null;
 	private RepositoryService repositoryService=null;
@@ -40,8 +30,9 @@ public class ActivitiUtil {
 		v.setReason("HAOBA");
 		ActivitiUtil f=new ActivitiUtil();
         f.startVacation("Vacation");
-	    String taskid=f.newtask(v);
-        f.upAssignee(taskid,"安旭旺1");
+	    /*String taskid=f.newtask(v);
+        f.upAssignee(taskid,"安旭旺1");*/
+        f.newtask(v);
 	}
 	// 启动请假流程
 			public Object startVacation(String CategoryName) {
@@ -52,8 +43,6 @@ public class ActivitiUtil {
 				// 得到运行时服务组件
 				 runtimeService = engine.getRuntimeService();
 				// 部署流程描述文件
-				repositoryService.createDeployment()
-						.addClasspathResource("com/qkj/activiti/"+CategoryName+".bpmn").deploy();
 			    taskservice=engine.getTaskService();
 				List<Task> list=teskCount(taskservice);
 				for (Task task : list) {
@@ -100,20 +89,37 @@ public class ActivitiUtil {
 	     		Map<String, Object> vars = new HashMap<String, Object>();
 				vars.put("arg", object);
 				// 启动流程
-				ProcessInstance pi = runtimeService.startProcessInstanceByKey(pd
-						.getKey());
+			/*	ProcessInstance pi = runtimeService.startProcessInstanceByKey(pd
+						.getKey());*/
+				 String[] assigneeList={"0","1","2","3"};
+					Map<String, Object> processInstVar = new HashMap<String, Object>();
+					//必须是List
+					processInstVar.put("assigneeList", Arrays.asList(assigneeList));
+					processInstVar.put("signCount", 0);
+					ProcessInstance pi=runtimeService.startProcessInstanceByKey(pd
+							.getKey(), processInstVar);
+					
+					
 				Task task=taskservice.createTaskQuery().executionId(pi.getId()).singleResult();
 				System.out.println(task.getId());
 				return pi.getId();
 				}
 			//设置任务受理人
 			private void upAssignee(String firstid,String userid) {
-				
 				taskservice.setAssignee(firstid, userid);
 				}
 			//获取指定用户持有的任务
 			private List<Task> teskCount(TaskService taskservice) {
 				List<Task> list =taskservice.createTaskQuery().taskOwner("张三").list();
 				return list;
+				}
+			//部署新的流程
+	                private void newbpmn(String CategoryName) {
+		                 repositoryService.createDeployment()
+		                 .addClasspathResource("com/qkj/activiti/"+CategoryName+".bpmn").deploy();
+				}
+	                //任务通过
+	                private void through(String taskId,Map vars) {
+	                	taskservice.complete(taskId, vars);	
 				}
 }

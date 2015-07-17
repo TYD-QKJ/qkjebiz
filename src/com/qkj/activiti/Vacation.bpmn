@@ -10,7 +10,7 @@
     <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="usertask1"></sequenceFlow>
     <sequenceFlow id="flow7" sourceRef="usertask1" targetRef="exclusivegateway1"></sequenceFlow>
-    <sequenceFlow id="flow8" name="小于等于3天" sourceRef="exclusivegateway1" targetRef="usertask2">
+    <sequenceFlow id="flow8" name="小于等于3天" sourceRef="exclusivegateway1" targetRef="usertask3">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${arg.days <= 3}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow12" name="大于3天111" sourceRef="exclusivegateway1" targetRef="usertask4">
