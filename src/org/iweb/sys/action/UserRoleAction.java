@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.iweb.rpt.domain.ListObject;
+/*import org.iweb.rpt.domain.ListObject;*/
 import org.iweb.sys.ContextHelper;
 import org.iweb.sys.Parameters;
 import org.iweb.sys.ToolsUtil;
@@ -38,7 +38,7 @@ public class UserRoleAction extends ActionSupport {
 
 	private List<String> cd;
 
-	private List<ListObject> newsClass;
+	/*private List<ListObject> newsClass;*/
 	private String[] newsAllowClasses;
 
 	private String specialPrivilegeHtml;
@@ -59,13 +59,13 @@ public class UserRoleAction extends ActionSupport {
 		this.newsAllowClasses = newsAllowClasses;
 	}
 
-	public List<ListObject> getNewsClass() {
+	/*public List<ListObject> getNewsClass() {
 		return newsClass;
 	}
 
 	public void setNewsClass(List<ListObject> newsClass) {
 		this.newsClass = newsClass;
-	}
+	}*/
 
 	public List<String> getCd() {
 		return cd;

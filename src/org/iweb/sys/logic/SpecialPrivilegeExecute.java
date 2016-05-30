@@ -3,8 +3,8 @@ package org.iweb.sys.logic;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.iweb.rpt.dao.SimpleReportDAO;
-import org.iweb.rpt.domain.ListObject;
+/*import org.iweb.rpt.dao.SimpleReportDAO;
+import org.iweb.rpt.domain.ListObject;*/
 import org.iweb.sys.ContextHelper;
 import org.iweb.sys.ToolsUtil;
 
@@ -86,7 +86,7 @@ public class SpecialPrivilegeExecute {
 
 		if (0 == sp.getShow_type()) { // 0:checkbox
 			int n = 1;
-			for (ListObject val : sp.getValue_list()) {
+			/*for (ListObject val : sp.getValue_list()) {
 				String ele_id = sp.getForm_name() + "_" + (n++);
 				sb.append("<span class='specialprivilege_list'>").append("<input type='checkbox' name='")
 						.append(sp.getForm_name()).append("' value='").append(val.getKey()).append("' id='")
@@ -100,9 +100,9 @@ public class SpecialPrivilegeExecute {
 				sb.append("<label for='").append(ele_id).append("'>").append(val.getValue()).append("</label>");
 
 				sb.append("</span>");
-			}
+			}*/
 		} else if (1 == sp.getShow_type()) { // 1:radio
-			for (ListObject val : sp.getValue_list()) {
+			/*for (ListObject val : sp.getValue_list()) {
 				int n = 1;
 				String ele_id = sp.getForm_name() + "_" + (n++);
 				sb.append("<span class='specialprivilege_list'>").append("<input type='radio' name='")
@@ -117,17 +117,17 @@ public class SpecialPrivilegeExecute {
 				sb.append("<label for='").append(ele_id).append("'>").append(val.getValue()).append("</label>");
 
 				sb.append("</span>");
-			}
+			}*/
 		} else if (2 == sp.getShow_type()) { // 2:select
 			sb.append("<select name='").append(sp.getForm_name()).append("'>");
 			sb.append("<option value=''>-请选择-</option>");
-			for (ListObject val : sp.getValue_list()) {
+			/*for (ListObject val : sp.getValue_list()) {
 				sb.append("<option value='").append(val.getKey());
 				if (ToolsUtil.isIn(val.getKey(), valueArray)) {
 					sb.append("' selected='selected' ");
 				}
 				sb.append(">").append(val.getValue()).append("</option>");
-			}
+			}*/
 			sb.append("</select>");
 
 		} else if (3 == sp.getShow_type()) { // 3:text
@@ -151,10 +151,10 @@ public class SpecialPrivilegeExecute {
 		news_sp.setShow_type(0);
 		news_sp.setForm_name("newsmanagerclass");
 
-		SimpleReportDAO sdao = new SimpleReportDAO();
+		/*SimpleReportDAO sdao = new SimpleReportDAO();*/
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("sqltext", "select uuid \"key\",title \"value\" from t_info_class;");
-		news_sp.setValue_list(sdao.getSimpleList(map));
+		/*news_sp.setValue_list(sdao.getSimpleList(map));*/
 		return news_sp;
 	}
 

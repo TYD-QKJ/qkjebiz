@@ -34,14 +34,14 @@ public class CacheFactory {
 			dbCacheLogic.cacheMenu(true);
 		} else if ("prod-tree".equals(cacheMode)) {
 			// 产品树数据缓存
-			dbCacheLogic.cacheProdTree(true);
+			/*dbCacheLogic.cacheProdTree(true);*/
 		} else if ("all".equals(cacheMode)) {
 			dbCacheLogic.clearAllCache();
 			cacheLogic.cacheSys(false);
 			dbCacheLogic.cacheRole(false);
 			dbCacheLogic.cacheDept(false);
 			dbCacheLogic.cacheMenu(false);
-			dbCacheLogic.cacheProdTree(false);
+			/*dbCacheLogic.cacheProdTree(false);*/
 		}
 	}
 }

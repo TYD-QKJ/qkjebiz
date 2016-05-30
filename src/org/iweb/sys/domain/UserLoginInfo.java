@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import com.qkj.ware.domain.Warepowers;
-
 public class UserLoginInfo {
 	private String uuid;
 	private String title;
@@ -36,10 +34,8 @@ public class UserLoginInfo {
 	private String dept_cname;
 
 	private List<String> permit_depts;
-	
 
 	private List<UserRole> user_roles_list;
-	private List<Warepowers> wps;
 	// private Set<String> user_prov_set;
 
 	private HashMap<String, Integer> member_prvg_map;
@@ -48,22 +44,12 @@ public class UserLoginInfo {
 	private HashMap<String, String> user_prvg_map;
 	private HashMap<String, String> user_function_map;
 	private HashMap<String, Integer> user_dept_type;// 是否包含子部门
-	
-	private HashMap<String, String> permit_depts2;//默认部门
+
+	private HashMap<String, String> permit_depts2;// 默认部门
 
 	private String sex_name;
 	private String status_name;
 	private String position_name;
-
-	
-
-	public List<Warepowers> getWps() {
-		return wps;
-	}
-
-	public void setWps(List<Warepowers> wps) {
-		this.wps = wps;
-	}
 
 	public HashMap<String, String> getPermit_depts2() {
 		return permit_depts2;
@@ -317,7 +303,8 @@ public class UserLoginInfo {
 		return member_function_map;
 	}
 
-	public void setMember_function_map(HashMap<String, String> member_function_map) {
+	public void setMember_function_map(
+			HashMap<String, String> member_function_map) {
 		this.member_function_map = member_function_map;
 	}
 

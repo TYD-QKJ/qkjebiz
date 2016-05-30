@@ -2,14 +2,14 @@ package org.iweb.sys.logic;
 
 import java.util.List;
 
-import org.iweb.rpt.domain.ListObject;
+/*import org.iweb.rpt.domain.ListObject;*/
 
 public class SpecialPrivilege {
 	private String privilege_id; // 关联的权限名称
 	private String special_name; // 关联的特殊权限说明
 	private Integer show_type; // 表现形式 0:checkbox 1:radio 2:select 3:text
 	private String form_name; // 表单获取值名称
-	private List<ListObject> value_list; // 如果是checkbox/radio/select,所取的值
+	/*private List<ListObject> value_list; */// 如果是checkbox/radio/select,所取的值
 	private String show_value; // 当前值,多个值用逗号','隔开
 
 	public String getPrivilege_id() {
@@ -44,13 +44,13 @@ public class SpecialPrivilege {
 		this.form_name = form_name;
 	}
 
-	public List<ListObject> getValue_list() {
+	/*public List<ListObject> getValue_list() {
 		return value_list;
 	}
 
 	public void setValue_list(List<ListObject> value_list) {
 		this.value_list = value_list;
-	}
+	}*/
 
 	public String getShow_value() {
 		return show_value;
